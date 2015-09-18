@@ -59,6 +59,11 @@ public class Calculator{
 				num1 = input.nextDouble();
 				System.out.println("Enter Value 2:");
 				num2 = input.nextDouble();
+				while (operation==4 && num2 == 0) {
+					System.out.println("You can't divide by zero '0'. Enter Value 2 again:");
+					num2 = input.nextDouble();
+				}
+
 			}
 		
 			switch (operation){
