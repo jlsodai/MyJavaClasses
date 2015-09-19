@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Calculator{
 
 	static double result, num1, num2;
+	static int num3;
 
 	public static double add(double a, double b){
 		result = a + b;
@@ -20,12 +21,30 @@ public class Calculator{
 		result = a / b;
 		return result;
 	}
-	public static double sqrt(double a, double b){
-		result = Math.sqrt(a);
-		return result;
+	public static void squareRoot(int a){
+		double check;
+		double result = a / 2;
+		do {
+			check = result;
+			result = (check + (a / check)) / 2;
+		} while ((check - result) != 0);
+		System.out.println("Your solution is: " +result);
 	}
+	// public static double sqrt(double a){
+	// 	result = Math.sqrt(a);
+	// 	return result;
+	// }
 	public static double power(double a, double b){
-		result = Math.pow(a,b);
+		int y = (int)a;
+		int x = (int)b;
+		result= 1;
+		
+		for(int i=1; i<=x; i++ )
+		{
+			
+			result *= y;
+			
+		}
 		return result;
 	}
 	public static double mod(double a, double b){
@@ -53,17 +72,12 @@ public class Calculator{
 		if (operation >=1 && operation <= 8) {
 			if (operation == 5) {
 				System.out.println("Enter Value");
-				num1 = input.nextDouble();
+				num3 = input.nextInt();
 			} else {
 				System.out.println("Enter Value 1:");
 				num1 = input.nextDouble();
 				System.out.println("Enter Value 2:");
 				num2 = input.nextDouble();
-				while (operation==4 && num2 == 0) {
-					System.out.println("You can't divide by zero '0'. Enter Value 2 again:");
-					num2 = input.nextDouble();
-				}
-
 			}
 		
 			switch (operation){
@@ -80,7 +94,7 @@ public class Calculator{
 					divide(num1, num2);
 				break;
 				case 5:
-					sqrt(num1, num2);
+					squareRoot(num3);
 				break;
 				case 6:
 					power(num1, num2);
@@ -94,7 +108,9 @@ public class Calculator{
 				default :
 	            System.out.println("Wrong Operation!");
 			}
-			System.out.println("Your solution is: " + result);
+			if (operation != 5) {
+				System.out.println("Your solution is: " + result);
+			}
 		}
 		// If wrong operation is entered
 		else {
